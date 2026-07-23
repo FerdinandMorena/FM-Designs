@@ -18,7 +18,7 @@ export default function HomePage() {
       <Hero />
       <ServicesBento />
       <ProjectsShowcase />
-      <ProcessTimeline />
+      <ProcessTimeline variant="alt" />
       <WhyChooseUs />
       <TestimonialsHorizontal />
       <CtaSection />

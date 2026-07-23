@@ -21,7 +21,7 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
   }, [active, limit]);
 
   return (
-    <section className="relative py-24">
+    <section className="theme-dark-alt relative py-24">
       <div className="container-px mx-auto max-w-7xl">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">

@@ -11,7 +11,7 @@ export function TestimonialsHorizontal() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
-    <section className="relative py-24">
+    <section className="theme-dark-alt relative py-24">
       <div className="container-px mx-auto max-w-7xl">
         <Eyebrow>Client feedback</Eyebrow>
         <h2 className="max-w-xl text-3xl font-bold tracking-tight sm:text-4xl">

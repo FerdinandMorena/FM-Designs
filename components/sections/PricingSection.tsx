@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export function PricingSection() {
   return (
-    <section className="relative py-24">
+    <section className="theme-dark-alt relative py-24">
       <div className="container-px mx-auto max-w-7xl">
         <div className="mx-auto max-w-xl text-center">
           <Eyebrow>Pricing</Eyebrow>
@@ -38,7 +38,9 @@ export function PricingSection() {
                   Most requested
                 </span>
               )}
-              <h3 className="text-base font-bold">{tier.name}</h3>
+              <h3 className={cn("text-base font-bold", tier.highlighted ? "text-white" : "text-[var(--foreground)]")}>
+                {tier.name}
+              </h3>
               <p
                 className={cn(
                   "mt-3 font-[family-name:var(--font-heading)] text-2xl font-bold",

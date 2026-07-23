@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type HorizontalScrollStageProps = {
@@ -17,6 +18,8 @@ type HorizontalScrollStageProps = {
 export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0, onSetup }: HorizontalScrollStageProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -122,6 +125,33 @@ export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0,
     };
   }, []);
 
+  // Tracks scroll position for the mobile/tablet carousel arrows below, so
+  // they disable at either end instead of scrolling past the last card.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const update = () => {
+      setCanPrev(track.scrollLeft > 4);
+      setCanNext(track.scrollLeft < track.scrollWidth - track.clientWidth - 4);
+    };
+    update();
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      track.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const scrollByCard = (direction: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.children[0] as HTMLElement | undefined;
+    const step = card ? card.offsetWidth + 24 : track.clientWidth * 0.85;
+    track.scrollBy({ left: direction * step, behavior: "smooth" });
+  };
+
   return (
     <div ref={sectionRef} className="relative overflow-hidden">
       <div
@@ -133,6 +163,25 @@ export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0,
       >
         {children}
       </div>
+
+      <button
+        type="button"
+        aria-label="Scroll to previous"
+        onClick={() => scrollByCard(-1)}
+        disabled={!canPrev}
+        className="glass absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[var(--foreground)] transition-opacity disabled:opacity-30 min-[900px]:hidden"
+      >
+        <ChevronLeft size={18} />
+      </button>
+      <button
+        type="button"
+        aria-label="Scroll to next"
+        onClick={() => scrollByCard(1)}
+        disabled={!canNext}
+        className="glass absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[var(--foreground)] transition-opacity disabled:opacity-30 min-[900px]:hidden"
+      >
+        <ChevronRight size={18} />
+      </button>
     </div>
   );
 }

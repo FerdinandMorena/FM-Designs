@@ -127,7 +127,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative py-24">
+      <section className="theme-dark-alt relative py-24">
         <div className="container-px mx-auto max-w-7xl">
           <Eyebrow>How we operate</Eyebrow>
           <h2 className="max-w-lg text-3xl font-extrabold tracking-tight sm:text-4xl">

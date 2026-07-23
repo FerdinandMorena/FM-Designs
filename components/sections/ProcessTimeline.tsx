@@ -5,8 +5,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { processSteps } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
-export function ProcessTimeline() {
+export function ProcessTimeline({ variant = "base" }: { variant?: "base" | "alt" }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +52,7 @@ export function ProcessTimeline() {
   }, []);
 
   return (
-    <section className="relative py-24">
+    <section className={cn("relative py-24", variant === "alt" && "theme-dark-alt")}>
       <div className="container-px mx-auto max-w-7xl">
         <div className="max-w-xl">
           <Eyebrow>How we work</Eyebrow>

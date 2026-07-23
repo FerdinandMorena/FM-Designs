@@ -123,6 +123,14 @@ select:focus-visible {
   -webkit-backdrop-filter: blur(20px);
 }
 
+/* Alternate section background — a step lighter than the base --background,
+   used to break up long stretches of identical dark navy between sections.
+   Deliberately distinct from --surface (the card token) so cards still read
+   as elevated when they sit on top of an alt section. */
+.theme-dark-alt {
+  background-color: var(--surface-muted);
+}
+
 /* Solid accent text treatment — no gradients per the brand's design language */
 .text-accent-solid {
   color: var(--color-accent);
