@@ -156,7 +156,7 @@ export const projects: Project[] = [
     title: "LIMP Automotive",
     description:
       "A modern automotive website built to showcase vehicle services, maintenance solutions, and company expertise. Features a responsive design, service catalogue, enquiry forms, and a professional user experience.",
-    image: "/limp.png",
+    image: "/Limp.png",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     liveUrl: "https://limp-automotive-service-centre.vercel.app/",
     githubUrl: "",
