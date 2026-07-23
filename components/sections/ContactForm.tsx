@@ -4,8 +4,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { CheckCircle2, Loader2, Send, AlertCircle } from "lucide-react";
 
 const schema = z.object({
   name: z.string().min(2, "Enter your full name"),
@@ -18,7 +19,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const {
     register,
     handleSubmit,
@@ -28,12 +29,25 @@ export function ContactForm() {
 
   const onSubmit = async (data: FormValues) => {
     setStatus("loading");
-    // Simulated submission — wire this up to an API route or form service
-    // (e.g. Resend, Formspree) before going live.
-    await new Promise((r) => setTimeout(r, 1100));
-    console.log("Contact form submission:", data);
-    setStatus("success");
-    reset();
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          phone: data.phone || "Not provided",
+          budget: data.budget || "Not provided",
+          message: data.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+      );
+      setStatus("success");
+      reset();
+    } catch (err) {
+      console.error("Contact form submission failed:", err);
+      setStatus("error");
+    }
   };
 
   const inputClass =
@@ -116,6 +130,13 @@ export function ContactForm() {
               />
               {errors.message && <p className="mt-1.5 text-xs text-red-400">{errors.message.message}</p>}
             </div>
+
+            {status === "error" && (
+              <p className="flex items-center gap-2 text-xs text-red-400">
+                <AlertCircle size={14} />
+                Something went wrong sending your message — please try again, or email us directly.
+              </p>
+            )}
 
             <button
               type="submit"

@@ -27,9 +27,9 @@ export const siteConfig = {
   description:
     "FM Designs is a web development studio building modern, high-converting websites for businesses that want to look as good online as they do in person.",
   url: "https://fmdesigns.co.za",
-  email: "hello@fmdesigns.co.za",
-  phone: "+27 60 000 0000",
-  whatsapp: "27600000000",
+  email: "hello.fmdesigns@gmail.com",
+  phone: "+27 67 146 4628",
+  whatsapp: "27671464628",
   location: "Polokwane, Limpopo, South Africa",
 };
 
@@ -337,10 +337,10 @@ export const whyChooseUs = [
 ];
 
 export const stats = [
-  { value: 100, suffix: "+", label: "Projects Completed" },
+  { value: 20, suffix: "+", label: "Projects Completed" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
   { value: 24, suffix: "/7", label: "Support" },
-  { value: 5, suffix: "+", label: "Years Experience" },
+  { value: 4, suffix: "+", label: "Years Experience" },
 ];
 
 export type PricingTier = {

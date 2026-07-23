@@ -58,7 +58,7 @@ export function Hero() {
       className="relative overflow-hidden bg-[var(--color-primary)]"
     >
       <Image
-        src="/hero-visual.png"
+        src="/hero.png"
         alt=""
         aria-hidden="true"
         fill
