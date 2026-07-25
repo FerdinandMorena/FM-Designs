@@ -29,7 +29,12 @@ export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0,
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
 
-    mm.add("(min-width: 900px) and (prefers-reduced-motion: no-preference)", () => {
+    // Pinned scroll-driven horizontal motion runs at every viewport width now —
+    // page scroll drives the track the same way on phones as it does on desktop,
+    // rather than falling back to a swipe/arrow carousel below 900px. Only
+    // prefers-reduced-motion opts out, in which case the track below stays a
+    // plain native-scroll strip with the prev/next buttons as the fallback.
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
       const cards = Array.from(track.children) as HTMLElement[];
       const first = cards[0];
       const last = cards[cards.length - 1];
@@ -157,7 +162,7 @@ export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0,
       <div
         ref={trackRef}
         className={cn(
-          "flex cursor-grab gap-6 overflow-x-auto px-6 pb-4 active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory min-[900px]:motion-safe:overflow-visible min-[900px]:motion-safe:px-[6vw] min-[900px]:motion-safe:cursor-auto [&::-webkit-scrollbar]:hidden",
+          "flex cursor-grab gap-6 overflow-x-auto px-6 pb-4 active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory motion-safe:overflow-visible motion-safe:px-[6vw] motion-safe:cursor-auto [&::-webkit-scrollbar]:hidden",
           trackClassName
         )}
       >
@@ -169,7 +174,7 @@ export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0,
         aria-label="Scroll to previous"
         onClick={() => scrollByCard(-1)}
         disabled={!canPrev}
-        className="glass absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[var(--foreground)] transition-opacity disabled:opacity-30 min-[900px]:hidden"
+        className="glass absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[var(--foreground)] transition-opacity disabled:opacity-30 motion-safe:hidden"
       >
         <ChevronLeft size={18} />
       </button>
@@ -178,7 +183,7 @@ export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0,
         aria-label="Scroll to next"
         onClick={() => scrollByCard(1)}
         disabled={!canNext}
-        className="glass absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[var(--foreground)] transition-opacity disabled:opacity-30 min-[900px]:hidden"
+        className="glass absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[var(--foreground)] transition-opacity disabled:opacity-30 motion-safe:hidden"
       >
         <ChevronRight size={18} />
       </button>

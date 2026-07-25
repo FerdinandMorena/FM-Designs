@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { services } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 export function ServicesEditorial() {
   const listRef = useRef<HTMLUListElement>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const list = listRef.current;
@@ -34,6 +36,30 @@ export function ServicesEditorial() {
     return () => ctx.revert();
   }, []);
 
+  // Touch devices can't hover to trigger the accent highlight, so on
+  // hover-incapable pointers we drive the same highlight off scroll
+  // position instead — whichever row is crossing the viewport's vertical
+  // center gets the accent treatment.
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    if (!window.matchMedia("(hover: none)").matches) return;
+
+    const rows = Array.from(list.children) as HTMLElement[];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const idx = rows.indexOf(entry.target as HTMLElement);
+          if (idx !== -1) setActiveIndex(idx);
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+    rows.forEach((row) => observer.observe(row));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="section-paper relative overflow-hidden py-24 sm:py-32">
       <div className="container-px mx-auto max-w-7xl">
@@ -57,7 +83,12 @@ export function ServicesEditorial() {
                 <span className="font-[family-name:var(--font-heading)] text-xs font-medium tabular-nums text-[var(--foreground-muted)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-[family-name:var(--font-heading)] text-xl font-medium tracking-tight text-[var(--foreground)] transition-colors sm:text-2xl group-hover:text-[var(--color-accent)]">
+                <h3
+                  className={cn(
+                    "font-[family-name:var(--font-heading)] text-xl font-medium tracking-tight text-[var(--foreground)] transition-colors sm:text-2xl group-hover:text-[var(--color-accent)]",
+                    activeIndex === i && "text-[var(--color-accent)]"
+                  )}
+                >
                   {service.title}
                 </h3>
                 <p className="col-span-2 mt-2 max-w-lg text-sm leading-relaxed text-[var(--foreground-muted)] sm:col-span-1 sm:mt-0">

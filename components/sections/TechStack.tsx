@@ -15,7 +15,7 @@ export function TechStack() {
         </div>
       </div>
 
-      <div className="mt-12 [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+      <div className="mt-12 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
         <div className="marquee-track gap-3" style={{ animationDirection: "reverse" }}>
           {loop.map((tech, i) => (
             <span
