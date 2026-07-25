@@ -1,414 +1,472 @@
 import {
-  Globe,
-  LayoutTemplate,
-  Briefcase,
-  ShoppingCart,
-  RefreshCw,
-  Search,
-  MapPin,
-  Palette,
-  Wrench,
-  Server,
-  Link2,
-  UserSquare2,
-  Compass,
-  ClipboardList,
   PenTool,
+  Layers,
+  Globe,
   Code2,
-  FlaskConical,
+  Cloud,
+  AppWindow,
+  Workflow,
+  Blocks,
+  Sparkles,
+  Compass,
+  Search,
+  ClipboardList,
+  Palette,
+  Boxes,
+  Hammer,
   Rocket,
-  LifeBuoy,
+  Gauge,
   type LucideIcon,
 } from "lucide-react";
 
 export const siteConfig = {
   name: "FM Designs",
-  tagline: "We Build Websites That Grow Businesses.",
+  tagline: "A studio for digital products worth trusting.",
   description:
-    "FM Designs is a web development studio building modern, high-converting websites for businesses that want to look as good online as they do in person.",
+    "FM Designs is a product and software studio. We partner with ambitious founders and organizations to design and engineer digital products, platforms, and brands built to last.",
   url: "https://fmdesigns.co.za",
   email: "hello.fmdesigns@gmail.com",
   phone: "+27 67 146 4628",
   whatsapp: "27671464628",
-  location: "Polokwane, Limpopo, South Africa",
+  location: "South Africa",
 };
+
+export const hero = {
+  eyebrow: "Product & software studio",
+  headline: "We build digital products worth trusting.",
+  subhead:
+    "FM Designs partners with ambitious founders and organizations to design, engineer, and ship software that feels inevitable — from first sketch to production.",
+};
+
+export const manifesto = [
+  "We don't build websites.",
+  "We build the products that carry",
+  "a company's reputation.",
+];
 
 export type Service = {
   icon: LucideIcon;
   title: string;
   description: string;
+  image: string;
 };
 
 export const services: Service[] = [
   {
+    icon: PenTool,
+    title: "Product Design",
+    description:
+      "We shape the product before a single line of code is written — flows, structure, and the decisions that make software feel obvious to use.",
+    image: "/images/services/product-design.webp",
+  },
+  {
+    icon: Layers,
+    title: "UI/UX Design",
+    description:
+      "Interfaces built on real usability thinking, not decoration. Every screen, state, and interaction earns its place.",
+    image: "/images/services/product-design.webp",
+  },
+  {
     icon: Globe,
-    title: "Website Development",
+    title: "Website Design",
     description:
-      "Custom-built, fast-loading websites engineered from scratch around what your business actually sells.",
+      "Marketing sites and brand homes that load fast, read clearly, and hold up next to any competitor in the room.",
+    image: "/images/services/brand-strategy.webp",
   },
   {
-    icon: Briefcase,
-    title: "Business Websites",
+    icon: Compass,
+    title: "Branding & Digital Strategy",
     description:
-      "Professional sites that make a small business feel established, trustworthy, and easy to book or call.",
+      "Identity, positioning, and a digital roadmap that ties every design decision back to a business outcome.",
+    image: "/images/services/brand-strategy.webp",
   },
   {
-    icon: LayoutTemplate,
-    title: "Landing Pages",
+    icon: Code2,
+    title: "Full Stack Development",
     description:
-      "Single-purpose, conversion-focused pages built to turn ad traffic into leads without the distractions.",
+      "End-to-end engineering across frontend, backend, and infrastructure — built to scale well past launch day.",
+    image: "/images/services/software-engineering.webp",
   },
   {
-    icon: UserSquare2,
-    title: "Portfolio Websites",
+    icon: AppWindow,
+    title: "Web Applications",
     description:
-      "Clean, image-first sites that let creative and professional work speak for itself.",
+      "Complex, data-heavy interfaces — dashboards, internal tools, portals — engineered for the people who use them all day.",
+    image: "/images/services/software-engineering.webp",
   },
   {
-    icon: Server,
-    title: "Corporate Websites",
+    icon: Cloud,
+    title: "SaaS Development",
     description:
-      "Multi-department, multi-page sites built for organisations that need structure as much as style.",
+      "Multi-tenant platforms, billing, permissions, and the unglamorous plumbing that makes a subscription product work.",
+    image: "/images/services/ai-solutions.webp",
   },
   {
-    icon: ShoppingCart,
-    title: "E-commerce Stores",
+    icon: Sparkles,
+    title: "AI-Powered Solutions",
     description:
-      "Storefronts with real checkout flows, inventory logic, and product pages that are built to sell.",
+      "Practical AI features — search, automation, generation — integrated where they measurably improve the product.",
+    image: "/images/services/ai-solutions.webp",
   },
   {
-    icon: RefreshCw,
-    title: "Website Redesign",
+    icon: Workflow,
+    title: "Business Systems",
     description:
-      "A full rebuild of an outdated site — same business, modern engine, better numbers.",
+      "Custom internal tools and integrations that replace spreadsheets and manual process with something that scales.",
+    image: "/images/services/business-systems.webp",
   },
   {
-    icon: Search,
-    title: "SEO Optimization",
+    icon: Blocks,
+    title: "WordPress Solutions",
     description:
-      "Technical and on-page SEO baked in from the first commit, not bolted on afterwards.",
-  },
-  {
-    icon: MapPin,
-    title: "Google Business Profile Setup",
-    description:
-      "Get found on Google Maps and local search with a profile that's fully verified and optimised.",
-  },
-  {
-    icon: Palette,
-    title: "Logo Design",
-    description:
-      "A mark that holds up on a favicon, a business card, and a billboard.",
-  },
-  {
-    icon: Palette,
-    title: "Brand Identity",
-    description:
-      "Colour, type, and voice defined once so every touchpoint feels like the same business.",
-  },
-  {
-    icon: Wrench,
-    title: "Website Maintenance",
-    description:
-      "Ongoing updates, backups, and monitoring so the site keeps running while you run the business.",
-  },
-  {
-    icon: Server,
-    title: "Hosting Assistance",
-    description:
-      "Reliable hosting set up and managed correctly the first time, no guesswork.",
-  },
-  {
-    icon: Link2,
-    title: "Domain Setup",
-    description:
-      "Domain registration, DNS, and email routing configured and explained in plain language.",
+      "Enterprise-grade WordPress builds — custom themes, headless setups, and performance that doesn't feel like WordPress.",
+    image: "/images/services/business-systems.webp",
   },
 ];
 
 export type Project = {
   id: number;
+  slug: string;
   title: string;
-  description: string;
+  client: string;
+  summary: string;
+  overview: string;
+  processNote: string;
+  outcomes: { label: string; value: string }[];
   image: string;
+  cover?: string;
   technologies: string[];
   liveUrl: string;
   githubUrl: string;
   category: "WordPress" | "Full Stack" | "Frontend";
   color: string;
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
     id: 1,
+    slug: "sgs",
     title: "SGS",
-    description:
-      "A professional corporate website developed to strengthen the company's digital presence, showcasing its services, expertise, and brand through a clean, responsive, and modern interface.",
+    client: "Corporate & Professional Services",
+    summary:
+      "A corporate website that strengthens the company's digital presence, showcasing its services, expertise, and brand through a clean, responsive interface.",
+    overview:
+      "SGS needed a digital presence that matched the calibre of its consulting work. We rebuilt the site from the ground up on a modern React and TypeScript foundation, restructuring the content around what prospective clients actually search for rather than an internal org chart, and designing a component system the internal team could extend without touching code.",
+    processNote:
+      "A four-week engagement: a content and IA audit, a componentised design system in Figma, then a Vite-powered build shipped in weekly increments.",
+    outcomes: [
+      { label: "Pages rebuilt", value: "12" },
+      { label: "Lighthouse performance", value: "97" },
+      { label: "Build time", value: "4 weeks" },
+    ],
     image: "/sgs.png",
+    cover: "/sgs.png",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     liveUrl: "https://mmg-group-website.vercel.app/",
     githubUrl: "",
     category: "Frontend",
-    color: "#3b82f6",
+    color: "#c2571c",
+    featured: true,
   },
   {
     id: 2,
+    slug: "limp-automotive",
     title: "LIMP Automotive",
-    description:
-      "A modern automotive website built to showcase vehicle services, maintenance solutions, and company expertise. Features a responsive design, service catalogue, enquiry forms, and a professional user experience.",
+    client: "Automotive Services",
+    summary:
+      "A modern automotive website showcasing vehicle services, maintenance solutions, and company expertise, with a responsive design and enquiry flow.",
+    overview:
+      "A regional automotive service centre needed a booking-first web presence that made its service catalogue easy to browse from a phone in a parking lot. We designed a service-led information architecture and a single-screen enquiry flow that routes directly to the front desk.",
+    processNote:
+      "Built solo end-to-end: discovery call, service catalogue mapping, then a two-week React build with an enquiry form as the primary conversion path.",
+    outcomes: [
+      { label: "Service pages", value: "8" },
+      { label: "Enquiry flow", value: "1 screen" },
+      { label: "Mobile-first build", value: "100%" },
+    ],
     image: "/Limp.png",
+    cover: "/Limp.png",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     liveUrl: "https://limp-automotive-service-centre.vercel.app/",
     githubUrl: "",
     category: "Frontend",
-    color: "#ef4444",
+    color: "#8c5a3c",
+    featured: true,
   },
   {
     id: 3,
+    slug: "coastal-beach-resort",
     title: "Coastal Beach Resort",
-    description:
-      "A modern and responsive resort platform showcasing accommodations, bookings, dining, and leisure experiences with an elegant interface and seamless user experience.",
+    client: "Hospitality",
+    summary:
+      "A full-stack resort platform showcasing accommodations, bookings, dining, and leisure experiences with an elegant, seamless interface.",
+    overview:
+      "Coastal Beach Resort needed more than a brochure site — it needed a working reservations backbone. We built a full MERN-stack platform: a public-facing experience for browsing rooms and amenities, backed by an Express/MongoDB API handling enquiries, availability, and content the resort team manages themselves.",
+    processNote:
+      "Delivered in two phases — a Node/Express/MongoDB API first, then a React front end designed around real guest photography and a distraction-free booking path.",
+    outcomes: [
+      { label: "Full-stack build", value: "MERN" },
+      { label: "Room & amenity pages", value: "15+" },
+      { label: "Self-managed content", value: "Yes" },
+    ],
     image: "/cbr.png",
+    cover: "/cbr.png",
     technologies: ["MongoDB", "Express", "React", "Node.js", "Tailwind CSS"],
     liveUrl: "https://www.coastalbeach.co.za/",
     githubUrl: "https://github.com/erisndev/Coastal-Beach-Resort",
     category: "Full Stack",
-    color: "#06b6d4",
+    color: "#4b6b63",
+    featured: true,
   },
   {
     id: 4,
+    slug: "amantungwa",
     title: "Amantungwa",
-    description:
-      "A professional WordPress website for Amantungwa, featuring an elegant design that highlights the organization's mission, services, and community impact. Built with a user-friendly layout, responsive design, and easy content management.",
+    client: "Non-Profit / Community Organization",
+    summary:
+      "A professional WordPress website highlighting the organization's mission, services, and community impact with an easy-to-manage layout.",
+    overview:
+      "A community organization needed a site its own staff could update without developer support. We built a custom WordPress theme with a structured editor experience, so mission updates, programme pages, and impact stories can be published without ever touching code.",
+    processNote:
+      "Custom theme built on core WordPress APIs — no page-builder bloat — with an editorial workflow the internal team was trained on at handover.",
+    outcomes: [
+      { label: "Self-editable pages", value: "100%" },
+      { label: "Custom theme", value: "From scratch" },
+      { label: "Training sessions", value: "2" },
+    ],
     image: "/aman.png",
+    cover: "/aman.png",
     technologies: ["WordPress", "PHP", "MySQL", "CSS"],
     liveUrl: "https://amantungwa.co.za/",
     githubUrl: "",
     category: "WordPress",
-    color: "#f97316",
+    color: "#a66b3d",
+    featured: true,
   },
   {
     id: 5,
+    slug: "joes-plumbing",
     title: "Joe's Plumbing",
-    description:
-      "A professional service website for a plumbing business, featuring service listings, contact information, and a clean design that builds trust and drives customer inquiries.",
+    client: "Local Trade Services",
+    summary:
+      "A service website with clear listings, contact information, and a clean design built to build trust and drive customer enquiries.",
+    overview:
+      "A trades business competing against listings-site noise needed a site that felt more credible than a Facebook page. We kept the build small and fast on purpose: one clear service list, transparent contact paths, and nothing to slow a phone call down.",
+    processNote:
+      "A one-week sprint: a single-page structure, service list, and a call-first layout designed around mobile search intent.",
+    outcomes: [
+      { label: "Build time", value: "1 week" },
+      { label: "Load time (4G)", value: "< 1.5s" },
+      { label: "Primary CTA", value: "Direct call" },
+    ],
     image: "/joe.png",
     technologies: ["React", "CSS", "JavaScript", "Vercel"],
     liveUrl: "https://joe-s-plumbing.vercel.app/",
     githubUrl: "",
     category: "Frontend",
-    color: "#fbbf24",
+    color: "#c2571c",
   },
   {
     id: 6,
+    slug: "knm-bursary-system",
     title: "KNM Bursary System",
-    description:
-      "A bursary management system featuring student applications, profile management, and a responsive dashboard interface for administrators.",
+    client: "Education / Public Sector",
+    summary:
+      "A bursary management platform featuring student applications, profile management, and a responsive administrator dashboard.",
+    overview:
+      "A bursary programme was running its applications through email and spreadsheets. We built a full application-management system: student-facing forms with document upload, and an internal dashboard for reviewing, filtering, and tracking applicants through the pipeline.",
+    processNote:
+      "A business-systems build — requirements gathered directly from the administrative team, then a MERN-stack application shipped and iterated against real application cycles.",
+    outcomes: [
+      { label: "Manual process replaced", value: "Spreadsheets" },
+      { label: "Admin dashboard", value: "Custom-built" },
+      { label: "Application pipeline", value: "End-to-end" },
+    ],
     image: "/knm.png",
     technologies: ["MongoDB", "Express", "React", "Node.js", "Tailwind CSS"],
     liveUrl: "https://kn-m-bursary-management-system.vercel.app/",
     githubUrl: "https://github.com/erisndev/KnM-Bursary-Management-System",
     category: "Full Stack",
-    color: "#34d399",
+    color: "#4b6b63",
   },
   {
     id: 7,
-    title: "CVLens AI CV Analyzer",
-    description:
-      "A full-stack AI-powered CV analyzer that helps users evaluate and improve their resumes with intelligent feedback, modern UI, and seamless user experience.",
+    slug: "cvlens",
+    title: "CVLens",
+    client: "AI-Powered Product",
+    summary:
+      "A full-stack AI-powered CV analyzer that helps users evaluate and improve their resumes with intelligent feedback and a modern interface.",
+    overview:
+      "CVLens is a product build from a blank page: an AI-assisted resume analyzer that parses an uploaded CV, scores it against role-specific criteria, and returns structured, actionable feedback. The interesting engineering problem was making an LLM's output feel deterministic and trustworthy in the UI, not a wall of generated text.",
+    processNote:
+      "Designed and built as a product, not a client brief — component architecture, state management, and the AI feedback pipeline were all built in-house.",
+    outcomes: [
+      { label: "AI feedback pipeline", value: "Custom-built" },
+      { label: "State management", value: "Zustand" },
+      { label: "Client-side parsing", value: "Puter.js" },
+    ],
     image: "/cvlens.png",
+    cover: "/cvlens.png",
     technologies: ["React", "Tailwind CSS", "Zustand", "Puter.js"],
     liveUrl: "https://cvlens-ai-cv-analyzer.vercel.app/",
     githubUrl: "https://github.com/FerdinandMorena/ai-cv-analyzer",
     category: "Full Stack",
-    color: "#06b6d4",
+    color: "#c2571c",
+    featured: true,
   },
-
   {
     id: 8,
+    slug: "silulo-lms",
     title: "Silulo LMS",
-    description:
-      "A learning management system providing course creation, student enrollment, and progress tracking features for an educational institution.",
+    client: "Education",
+    summary:
+      "A learning management system providing course creation, student enrollment, and progress tracking for an educational institution.",
+    overview:
+      "An educational institution needed a proper LMS without the overhead of building one from scratch. We implemented and customized a Tutor LMS deployment on WordPress — course structures, enrollment flows, and progress tracking — configured around how the institution actually runs its programmes.",
+    processNote:
+      "Configuration-led delivery: information architecture and course-flow mapping first, then a themed Tutor LMS build with custom enrollment logic.",
+    outcomes: [
+      { label: "Course & enrollment flows", value: "Custom-configured" },
+      { label: "Progress tracking", value: "Built-in" },
+      { label: "Platform", value: "WordPress + Tutor LMS" },
+    ],
     image: "/silulo.png",
+    cover: "/images/projects/silulo-lms-cover.webp",
     technologies: ["WordPress", "Tutor LMS", "PHP", "MySQL", "CSS"],
     liveUrl: "https://silulocollege.erisngraduate.com/",
     githubUrl: "",
     category: "WordPress",
-    color: "#8b5cf6",
+    color: "#8c5a3c",
+  },
+  {
+    id: 9,
+    slug: "portfolio-website",
+    title: "Portfolio Website",
+    client: "Personal Brand",
+    summary:
+      "A personal portfolio and case-study site for a full-stack engineer and product designer, built to show process and craft rather than a flat list of links.",
+    overview:
+      "The brief was self-directed: build a portfolio that reads like a small product studio's site rather than a résumé with a hero image. We designed an editorial, dark-toned layout structured around About, Skills, Work, and Experience, with a single case-study flow per project so each piece of work gets room to explain its own decisions.",
+    processNote:
+      "Designed and built solo, end-to-end — visual system through deployment — as a living case study that gets updated alongside new work rather than shipped once and left alone.",
+    outcomes: [
+      { label: "Framework", value: "Next.js" },
+      { label: "Design system", value: "Custom-built" },
+      { label: "Deployment", value: "Vercel" },
+    ],
+    image: "/portfolio.png",
+    cover: "/portfolio.png",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://ferdinandmorena-portfolio.vercel.app/",
+    githubUrl: "",
+    category: "Frontend",
+    color: "#8c5a3c",
+    featured: true,
   },
 ];
 
-export const processSteps: {
+export const featuredProjects = projects.filter((p) => p.featured);
+
+export type ProcessStep = {
   title: string;
   description: string;
   icon: LucideIcon;
-}[] = [
+  image: string;
+};
+
+export const processSteps: ProcessStep[] = [
   {
-    title: "Discovery",
+    title: "Discover",
     description:
-      "We learn the business, the audience, and what the site actually needs to achieve.",
+      "We learn the business, the audience, and what the product actually needs to achieve before anything is designed.",
     icon: Compass,
+    image: "/images/process/01-discover.webp",
   },
   {
     title: "Research",
     description:
-      "Competitors, market position, and technical constraints get mapped before any design starts.",
+      "Competitors, users, and technical constraints get mapped so decisions are made on evidence, not assumption.",
     icon: Search,
+    image: "/images/process/02-research.webp",
   },
   {
-    title: "Planning",
+    title: "Strategy",
     description:
-      "Sitemap, content structure, and a project timeline are agreed on in writing.",
+      "Scope, architecture, and success metrics are agreed on in writing before a single screen is designed.",
     icon: ClipboardList,
+    image: "/images/process/03-strategy.webp",
   },
   {
-    title: "UI/UX Design",
+    title: "Design",
     description:
-      "Wireframes become high-fidelity screens, reviewed with you before development begins.",
-    icon: PenTool,
+      "Wireframes become high-fidelity, production-ready screens — reviewed with you at every stage, not just at the end.",
+    icon: Palette,
+    image: "/images/process/04-design.webp",
   },
   {
-    title: "Development",
+    title: "Prototype",
     description:
-      "Clean, modular code built sprint by sprint, with progress visible the whole way through.",
-    icon: Code2,
+      "Key flows are proven interactively before engineering begins, so the riskiest assumptions are tested early.",
+    icon: Boxes,
+    image: "/images/process/05-prototype.webp",
   },
   {
-    title: "Testing",
+    title: "Develop",
     description:
-      "Cross-browser, cross-device, and performance testing before anything ships.",
-    icon: FlaskConical,
+      "Clean, modular code built sprint by sprint, with progress visible and demoable the whole way through.",
+    icon: Hammer,
+    image: "/images/process/06-develop.webp",
   },
   {
-    title: "Deployment",
+    title: "Launch",
     description:
-      "The site goes live on production hosting with monitoring switched on.",
+      "The product ships to production with monitoring, analytics, and a rollback plan already in place.",
     icon: Rocket,
+    image: "/images/process/07-launch.webp",
   },
   {
-    title: "Support",
+    title: "Optimize",
     description:
-      "Post-launch updates and fixes so the site keeps working as the business grows.",
-    icon: LifeBuoy,
+      "Post-launch, we watch real usage and performance data and keep refining — the relationship doesn't end at launch day.",
+    icon: Gauge,
+    image: "/images/process/08-optimize.webp",
   },
 ];
 
 export const whyChooseUs = [
   {
-    title: "Fast Delivery",
-    description: "Clear sprints and deadlines that are actually kept.",
+    title: "Product thinking first",
+    description:
+      "Every decision is grounded in how the product will actually be used, not how it looks in a mockup.",
   },
   {
-    title: "Responsive Design",
-    description: "Every screen size tested, not just assumed.",
+    title: "Full-stack capability",
+    description:
+      "One team across design, engineering, and infrastructure — no handoffs lost in translation.",
   },
   {
-    title: "SEO Optimized",
-    description: "Built to be found, not just built to look good.",
+    title: "Transparent process",
+    description:
+      "Fixed check-ins and visible progress from the first sprint, never a black box until launch day.",
   },
   {
-    title: "Modern UI",
-    description: "Interfaces that feel current, not templated.",
+    title: "Built to scale",
+    description:
+      "Architecture decisions are made for the product's second year, not just its first release.",
   },
   {
-    title: "Secure Websites",
-    description: "Sensible defaults for forms, data, and hosting.",
-  },
-  {
-    title: "Lightning Fast",
-    description: "Performance budgets enforced from the first commit.",
-  },
-  {
-    title: "Affordable Solutions",
-    description: "Honest pricing with no inflated retainer surprises.",
-  },
-  {
-    title: "Reliable Support",
-    description: "A real person to call when something needs fixing.",
-  },
-  {
-    title: "Conversion Focused",
-    description: "Every page designed around a specific next action.",
-  },
-  {
-    title: "Quality Code",
-    description: "Readable, documented, and built to be handed over cleanly.",
+    title: "Long-term partnership",
+    description:
+      "Support and iteration continue after launch — we stay close to what we ship.",
   },
 ];
 
 export const stats = [
-  { value: 20, suffix: "+", label: "Projects Completed" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
-  { value: 24, suffix: "/7", label: "Support" },
-  { value: 4, suffix: "+", label: "Years Experience" },
-];
-
-export type PricingTier = {
-  name: string;
-  price: string;
-  cadence?: string;
-  description: string;
-  features: string[];
-  cta: string;
-  highlighted?: boolean;
-};
-
-export const pricingTiers: PricingTier[] = [
-  {
-    name: "Starter Website",
-    price: "From R2,500",
-    description:
-      "A focused single or multi-page site to get a business online properly.",
-    features: [
-      "Up to 5 pages",
-      "Mobile responsive build",
-      "Contact form",
-      "Basic on-page SEO",
-      "2 rounds of revisions",
-    ],
-    cta: "Get Started",
-  },
-  {
-    name: "Business Website",
-    price: "Request a Quote",
-    description:
-      "A larger site for a business that needs more pages, more structure, and more polish.",
-    features: [
-      "Custom page count",
-      "Animation & micro-interactions",
-      "CMS for easy content updates",
-      "Advanced SEO setup",
-      "Priority support window",
-    ],
-    cta: "Request a Quote",
-    highlighted: true,
-  },
-  {
-    name: "E-commerce Website",
-    price: "Custom Quote",
-    description:
-      "A full storefront built around your catalogue, payments, and fulfilment process.",
-    features: [
-      "Product & inventory setup",
-      "Secure checkout integration",
-      "Order & customer management",
-      "Performance-tuned at scale",
-    ],
-    cta: "Get a Custom Quote",
-  },
-  {
-    name: "Enterprise",
-    price: "Let's Talk",
-    description:
-      "Multi-department platforms, integrations, and ongoing dedicated engineering.",
-    features: [
-      "Dedicated project lead",
-      "Custom integrations & APIs",
-      "SLA-backed support",
-      "Scalable architecture review",
-    ],
-    cta: "Let's Talk",
-  },
+  { value: 20, suffix: "+", label: "Projects shipped" },
+  { value: 98, suffix: "%", label: "Client satisfaction" },
+  { value: 4, suffix: "+", label: "Years in practice" },
+  { value: 24, suffix: "/7", label: "Support window" },
 ];
 
 export const testimonials = [
@@ -437,47 +495,42 @@ export const testimonials = [
     name: "David N.",
     role: "Small business owner",
     quote:
-      "Every change request was handled quickly and the animations make the site feel premium.",
+      "Every change request was handled quickly and the finished product feels genuinely premium.",
     rating: 5,
   },
 ];
 
 export const techStack = [
-  "HTML",
-  "CSS",
-  "JavaScript",
   "TypeScript",
   "React",
   "Next.js",
   "Node.js",
   "Express.js",
   "MongoDB",
-  "MySQL",
+  "PostgreSQL",
   "WordPress",
   "Tailwind CSS",
   "GSAP",
-  "Framer Motion",
-  "REST APIs",
-  "Git",
-  "GitHub",
+  "REST & GraphQL APIs",
   "Figma",
   "Docker",
+  "Git",
 ];
 
 export const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
 export const footerLinks = {
   quick: [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
+    { href: "/work", label: "Work" },
     { href: "/services", label: "Services" },
+    { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ],
   legal: [

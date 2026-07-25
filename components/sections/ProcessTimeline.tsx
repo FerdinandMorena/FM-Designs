@@ -1,90 +1,52 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { HorizontalScrollStage } from "@/components/ui/HorizontalScrollStage";
 import { processSteps } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-export function ProcessTimeline({ variant = "base" }: { variant?: "base" | "alt" }) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const line = lineRef.current;
-    if (!section || !line) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        line,
-        { scaleY: 0 },
-        {
-          scaleY: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 60%",
-            end: "bottom 80%",
-            scrub: 0.5,
-          },
-        }
-      );
-
-      gsap.utils.toArray<HTMLElement>(".process-step").forEach((item) => {
-        gsap.fromTo(
-          item,
-          { opacity: 0.2, x: -16, scale: 0.94 },
-          {
-            opacity: 1,
-            x: 0,
-            scale: 1,
-            transformOrigin: "left center",
-            scrollTrigger: { trigger: item, start: "top 78%", end: "top 45%", scrub: true },
-          }
-        );
-      });
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
-
+export function ProcessTimeline({ variant = "dark" }: { variant?: "dark" | "paper" }) {
   return (
-    <section className={cn("relative py-24", variant === "alt" && "theme-dark-alt")}>
+    <section className={cn("relative py-24 sm:py-32", variant === "paper" ? "section-paper" : "bg-[var(--background)]")}>
       <div className="container-px mx-auto max-w-7xl">
         <div className="max-w-xl">
           <Eyebrow>How we work</Eyebrow>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            A clear process, from first call to launch day.
+          <h2 className="font-[family-name:var(--font-heading)] text-3xl font-medium tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
+            Eight stages, one continuous thread.
           </h2>
         </div>
+      </div>
 
-        <div ref={sectionRef} className="relative mt-16 pl-14 sm:pl-16">
-          <div className="absolute left-5 top-0 h-full w-px bg-[var(--border-soft)]" />
-          <div
-            ref={lineRef}
-            className="absolute left-5 top-0 h-full w-px origin-top bg-[var(--color-accent)]"
-          />
-
-          <ol className="space-y-10">
-            {processSteps.map((step, i) => (
-              <li key={step.title} className="process-step relative">
-                <span className="absolute -left-14 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--color-accent)] ring-1 ring-[var(--border-soft)] sm:-left-16">
-                  <step.icon size={14} />
-                </span>
-                <p className="text-[11px] font-semibold tracking-wide text-[var(--foreground-muted)]">
+      <div className="mt-14 sm:mt-16">
+        <HorizontalScrollStage pinOffset={60}>
+          {processSteps.map((step, i) => (
+            <div key={step.title} className="w-[80vw] shrink-0 snap-center sm:w-[420px] md:w-[38vw] lg:w-[30vw]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[var(--surface)]">
+                <Image
+                  src={step.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 30vw, (min-width: 768px) 38vw, 80vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="mt-5 flex items-start gap-4">
+                <span className="font-[family-name:var(--font-heading)] text-xs font-medium tabular-nums text-[var(--color-accent)]">
                   {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-1 text-base font-bold">{step.title}</h3>
-                <p className="mt-1 max-w-md text-sm leading-relaxed text-[var(--foreground-muted)]">
-                  {step.description}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
+                </span>
+                <div>
+                  <h3 className="font-[family-name:var(--font-heading)] text-lg font-medium text-[var(--foreground)]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 max-w-xs text-sm leading-relaxed text-[var(--foreground-muted)]">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </HorizontalScrollStage>
       </div>
     </section>
   );

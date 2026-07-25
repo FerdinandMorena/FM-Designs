@@ -17,11 +17,12 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "web development agency",
-    "website design South Africa",
-    "Next.js developer",
-    "business website design",
-    "e-commerce website development",
+    "product design studio",
+    "software development agency",
+    "UI/UX design",
+    "SaaS development",
+    "web application development",
+    "full stack development",
   ],
   authors: [{ name: siteConfig.name }],
   openGraph: {

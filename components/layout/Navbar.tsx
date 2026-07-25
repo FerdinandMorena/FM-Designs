@@ -91,8 +91,8 @@ export function Navbar() {
           </ul>
 
           <div className="hidden md:flex">
-            <MagneticButton href="/contact" className="!px-5 !py-2.5 text-xs">
-              Get a Free Quote
+            <MagneticButton href="/contact" variant="accent" className="!px-5 !py-2.5 text-xs">
+              Start a project
             </MagneticButton>
           </div>
 
@@ -133,8 +133,8 @@ export function Navbar() {
                     </SheetClose>
                   ))}
                   <SheetClose asChild>
-                    <MagneticButton href="/contact" className="mt-4 w-full">
-                      Get a Free Quote
+                    <MagneticButton href="/contact" variant="accent" className="mt-4 w-full">
+                      Start a project
                     </MagneticButton>
                   </SheetClose>
                 </div>

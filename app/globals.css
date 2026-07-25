@@ -5,28 +5,23 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Brand palette */
-  --color-primary: #0b1220;
-  --color-secondary: #3b82f6;
-  --color-accent: #2563eb;
+  /* Brand palette — ink, paper, and one signature accent. No blues, no
+     gradients-as-identity: the accent is the only colour note in the system. */
+  --color-primary: #0e0d0c;
+  --color-accent: #c2571c;
+  --color-secondary: #8c5a3c;
 
-  /* Accent range — used sparingly, for atmospheric lighting only */
-  --color-violet: #6d28d9;
-  --color-cyan: #06b6d4;
-
-  /* Surfaces — deep navy, matching the hero image's colour theme. --surface
-     sits one step lighter than --background so cards read as elevated. */
-  --background: #070c17;
-  --surface: #101a2c;
-  --surface-muted: #0c1524;
-  --surface-tint: rgba(37, 99, 235, 0.14);
-  --border-soft: rgba(255, 255, 255, 0.09);
-  --glass-bg: rgba(16, 26, 44, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Base surfaces — warm near-black, not cool navy. --surface sits one step
+     lighter than --background so cards read as elevated without a glow. */
+  --background: #0e0d0c;
+  --surface: #17140f;
+  --surface-muted: #131110;
+  --surface-tint: rgba(194, 87, 28, 0.1);
+  --border-soft: rgba(245, 242, 236, 0.1);
 
   /* Text */
-  --foreground: #f1f5f9;
-  --foreground-muted: #94a3b8;
+  --foreground: #f5f2ec;
+  --foreground-muted: #9a948a;
 
   /* shadcn primitive tokens, mapped to the brand palette above */
   --card: var(--surface);
@@ -41,11 +36,27 @@
   --muted-foreground: var(--foreground-muted);
   --accent: var(--surface-tint);
   --accent-foreground: var(--foreground);
-  --destructive: #dc2626;
+  --destructive: #c14a3a;
   --border: var(--border-soft);
   --input: var(--border-soft);
   --ring: var(--color-accent);
-  --radius: 1rem;
+  --radius: 0.7rem;
+}
+
+/* Scoped light "paper" override — applied per-section (not a global dark-mode
+   toggle) so the page can alternate dark/light rhythm down the scroll while
+   every existing component keeps reading var(--background)/var(--surface)/
+   var(--foreground) unchanged. */
+.section-paper {
+  --background: #f6f3ee;
+  --surface: #ffffff;
+  --surface-muted: #efeae1;
+  --surface-tint: rgba(194, 87, 28, 0.08);
+  --border-soft: rgba(20, 19, 15, 0.1);
+  --foreground: #14130f;
+  --foreground-muted: #6b6559;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 @theme inline {
@@ -93,6 +104,7 @@ html {
 body {
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
+  background-color: var(--background);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -115,28 +127,28 @@ select:focus-visible {
   border-radius: 4px;
 }
 
-/* Frosted-glass utility — light, editorial, no colour tint */
+/* Overlay chrome only (fixed nav pill, mobile sheet, modal backdrops) — a
+   light, editorial translucency, never used as a card-content treatment. */
 .glass {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 1px solid var(--border-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
-/* Alternate section background — a step lighter than the base --background,
-   used to break up long stretches of identical dark navy between sections.
-   Deliberately distinct from --surface (the card token) so cards still read
-   as elevated when they sit on top of an alt section. */
+/* Alternate dark section background — a step lighter than --background,
+   used to break up long stretches of identical ink between sections that
+   both stay in the dark register. */
 .theme-dark-alt {
   background-color: var(--surface-muted);
 }
 
-/* Solid accent text treatment — no gradients per the brand's design language */
 .text-accent-solid {
   color: var(--color-accent);
 }
 
-/* Custom cursor (desktop only, hidden on touch) */
+/* Custom cursor (desktop only, hidden on touch) — a quiet dot + thin ring,
+   no glow. */
 .cursor-dot,
 .cursor-ring {
   position: fixed;
@@ -149,17 +161,17 @@ select:focus-visible {
 }
 
 .cursor-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background: var(--color-accent);
 }
 
 .cursor-ring {
-  width: 32px;
-  height: 32px;
-  border: 1.5px solid var(--color-accent);
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--color-accent);
   transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
-  opacity: 0.55;
+  opacity: 0.45;
 }
 
 @media (hover: none) {
@@ -174,18 +186,13 @@ select:focus-visible {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
+  height: 2px;
   width: 100%;
   transform-origin: left;
   background: var(--color-accent);
   z-index: 60;
 }
 
-/* Respect reduced motion — scoped to actual vestibular triggers (parallax,
-   scroll-jacking, looping background motion), NOT ordinary hover/focus
-   micro-transitions. Large scroll-driven timelines are separately gated in
-   JS via gsap.matchMedia; this block only has to stop looping/ambient CSS
-   animation and instant-jump scrolling. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;
@@ -217,138 +224,54 @@ select:focus-visible {
   .marquee-track {
     animation: none;
   }
-  .glow-button::before {
-    animation: none;
-  }
-  .hero-glow-pulse {
-    animation: none;
-  }
 }
 
-/* Hero ambient glow — a soft, slow opacity pulse (no position change, so it's
-   safe to leave running for most reduced-motion users; still paused above
-   out of caution since it's a looping ambient animation). */
-.hero-glow-pulse {
-  animation: glow-pulse 7s ease-in-out infinite;
+/* Tactile button press — replaces the old animated glow border. Motion only,
+   no colour/blur effects, so it reads as physical feedback rather than a
+   decorative flourish. */
+.btn-tactile {
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
 }
 
-@keyframes glow-pulse {
-  0%, 100% {
-    opacity: 0.18;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.32;
-    transform: scale(1.08);
-  }
+.btn-tactile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.45);
 }
 
-/* Aurora drift — large, heavily-blurred colour blooms used on dark "cinematic"
-   sections only (Hero, CTA). Opacity stays low and blur stays high so this
-   reads as ambient lighting, never a saturated gradient. */
-.aurora-field {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.aurora-blob {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(90px);
-  mix-blend-mode: screen;
-  will-change: transform;
-}
-
-.aurora-blob--a {
-  animation: aurora-drift-a 22s ease-in-out infinite;
-}
-
-.aurora-blob--b {
-  animation: aurora-drift-b 26s ease-in-out infinite;
-}
-
-@keyframes aurora-drift-a {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(4%, -6%) scale(1.12); }
-}
-
-@keyframes aurora-drift-b {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-5%, 5%) scale(1.08); }
+.btn-tactile:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora-blob--a,
-  .aurora-blob--b {
-    animation: none;
+  .btn-tactile,
+  .btn-tactile:hover {
+    transition: background-color 0.22s ease, color 0.22s ease;
+    transform: none;
+    box-shadow: none;
   }
 }
 
 /* Subtle film-grain noise, used at very low opacity over dark cinematic
-   sections for a touch of premium texture — never legible as a pattern. */
+   sections (Hero, closing CTA) for a touch of premium texture — never
+   legible as a pattern. */
 .noise-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.045;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   background-size: 160px 160px;
 }
 
-/* Animated conic-gradient border + soft glow, used on the primary CTA button */
-@property --glow-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-.glow-button {
-  position: relative;
-  isolation: isolate;
-}
-
-.glow-button::before {
-  content: "";
-  position: absolute;
-  inset: -1.5px;
-  z-index: -1;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: conic-gradient(from var(--glow-angle, 0deg), var(--color-accent), var(--color-secondary), transparent 45%, var(--color-accent));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: glow-rotate 4.5s linear infinite;
-}
-
-.glow-button::after {
-  content: "";
-  position: absolute;
-  inset: -10px;
-  z-index: -2;
-  border-radius: inherit;
-  background: var(--color-accent);
-  opacity: 0.22;
-  filter: blur(18px);
-}
-
-@keyframes glow-rotate {
-  to {
-    --glow-angle: 360deg;
-  }
-}
-
-/* Why Choose Us — active row emphasis */
+/* Proof section — active row emphasis */
 .why-row h3 {
   color: var(--foreground-muted);
 }
 
 .why-row.is-active h3 {
-  color: var(--color-accent);
+  color: var(--foreground);
 }
 
 .why-row.is-active {

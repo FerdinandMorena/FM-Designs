@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 type BaseProps = {
   children: ReactNode;
   className?: string;
-  variant?: "solid" | "outline" | "glow";
+  variant?: "solid" | "outline" | "accent";
 };
 
 type ButtonAsLink = BaseProps &
@@ -19,13 +19,13 @@ type ButtonAsButton = BaseProps &
   ComponentPropsWithoutRef<"button"> & { href?: undefined };
 
 const base =
-  "group relative inline-flex h-auto items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold shadow-none transition-colors duration-300";
+  "btn-tactile group relative inline-flex h-auto items-center justify-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold shadow-none";
 
 const variantStyles = {
-  solid: "bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent)]/88",
+  solid: "bg-[var(--foreground)] text-[var(--background)] hover:opacity-90",
   outline:
     "border border-[var(--border-soft)] bg-transparent text-[var(--foreground)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
-  glow: "glow-button bg-[var(--color-accent)] text-white",
+  accent: "bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent)]/90",
 };
 
 export function MagneticButton(props: ButtonAsLink | ButtonAsButton) {

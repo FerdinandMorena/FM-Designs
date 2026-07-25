@@ -10,7 +10,7 @@ const statementLines = [
   "We don't just design interfaces —",
   "we engineer outcomes.",
   "Every decision is measured against",
-  "one question: does it grow the business.",
+  "one question: does it earn its place.",
 ];
 
 export function WhyChooseUs() {
@@ -53,15 +53,15 @@ export function WhyChooseUs() {
   }, []);
 
   return (
-    <section className="relative py-24">
+    <section className="relative bg-[var(--background)] py-24 sm:py-32">
       <div className="container-px mx-auto max-w-7xl">
-        <Eyebrow>Why choose us</Eyebrow>
+        <Eyebrow>Why FM Designs</Eyebrow>
 
         <div className="mt-6 grid gap-16 lg:grid-cols-2">
           <div ref={linesWrapRef}>
-            <p className="font-[family-name:var(--font-heading)] text-3xl font-bold leading-[1.2] tracking-tight sm:text-4xl lg:text-[2.75rem]">
+            <p className="font-[family-name:var(--font-heading)] text-3xl font-medium leading-[1.2] tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-[2.75rem]">
               {statementLines.map((line, i) => (
-                <span key={i} className="statement-line block text-[var(--foreground)]">
+                <span key={i} className="statement-line block">
                   {line}
                 </span>
               ))}
@@ -72,15 +72,15 @@ export function WhyChooseUs() {
             {whyChooseUs.map((item, i) => (
               <li
                 key={item.title}
-                className="why-row group flex items-baseline justify-between gap-6 py-4 transition-colors"
+                className="why-row group flex items-baseline justify-between gap-6 border-l-2 border-transparent py-5 pl-4 transition-colors"
               >
                 <div className="flex items-baseline gap-4">
-                  <span className="text-xs font-semibold text-[var(--foreground-muted)] tabular-nums">
+                  <span className="text-xs font-semibold tabular-nums text-[var(--foreground-muted)]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="text-base font-bold transition-colors">{item.title}</h3>
+                  <h3 className="text-base font-bold text-[var(--foreground)] transition-colors">{item.title}</h3>
                 </div>
-                <p className="hidden max-w-xs text-right text-xs leading-relaxed text-[var(--foreground-muted)] transition-opacity sm:block">
+                <p className="hidden max-w-xs text-right text-xs leading-relaxed text-[var(--foreground-muted)] sm:block">
                   {item.description}
                 </p>
               </li>

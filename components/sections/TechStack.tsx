@@ -5,11 +5,11 @@ export function TechStack() {
   const loop = [...techStack, ...techStack];
 
   return (
-    <section className="relative py-24">
+    <section className="section-paper relative py-20">
       <div className="container-px mx-auto max-w-7xl">
         <div className="max-w-xl">
           <Eyebrow>Our toolkit</Eyebrow>
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h2 className="font-[family-name:var(--font-heading)] text-2xl font-medium tracking-tight text-[var(--foreground)] sm:text-3xl">
             Modern technology, chosen deliberately.
           </h2>
         </div>

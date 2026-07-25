@@ -2,33 +2,33 @@ import type { Metadata } from "next";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { AmbientGrid } from "@/components/ui/AmbientGrid";
-import { PortfolioGrid } from "@/components/sections/PortfolioGrid";
+import { WorkGrid } from "@/components/sections/WorkGrid";
 import { CtaSection } from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Work",
   description:
-    "A selection of business, e-commerce, portfolio, and web application projects built by FM Designs.",
+    "Case studies from FM Designs — product design and full-stack engineering for real, shipped clients.",
 };
 
-export default function PortfolioPage() {
+export default function WorkPage() {
   return (
     <>
-      <section className="relative overflow-hidden pt-40 pb-10 md:pt-48">
+      <section className="relative overflow-hidden pt-40 pb-16 md:pt-48">
         <AmbientGrid />
         <div className="container-px mx-auto max-w-7xl">
-          <Eyebrow>Portfolio</Eyebrow>
+          <Eyebrow>Work</Eyebrow>
           <SplitHeading
             as="h1"
             trigger="load"
-            className="max-w-2xl text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl"
+            className="max-w-2xl font-[family-name:var(--font-heading)] text-4xl font-medium leading-[1.1] tracking-tight text-[var(--foreground)] sm:text-5xl"
           >
-            Work built for real businesses, not just a mockup.
+            Work built for real businesses, not a mockup.
           </SplitHeading>
         </div>
       </section>
 
-      <PortfolioGrid />
+      <WorkGrid />
       <CtaSection />
     </>
   );

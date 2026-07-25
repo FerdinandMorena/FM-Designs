@@ -54,7 +54,7 @@ export function ContactForm() {
     "w-full rounded-xl border border-[var(--border-soft)] bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-[var(--foreground)]/40 focus:border-[var(--color-accent)]";
 
   return (
-    <div className="glass relative overflow-hidden rounded-3xl p-7 sm:p-9">
+    <div className="relative overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-7 sm:p-9">
       <AnimatePresence mode="wait">
         {status === "success" ? (
           <motion.div
@@ -113,7 +113,7 @@ export function ContactForm() {
                 <label htmlFor="budget" className="mb-1.5 block text-xs font-medium">
                   Estimated budget (optional)
                 </label>
-                <input id="budget" className={inputClass} placeholder="R5,000 – R15,000" {...register("budget")} />
+                <input id="budget" className={inputClass} placeholder="e.g. $5,000 – $15,000" {...register("budget")} />
               </div>
             </div>
 
@@ -141,7 +141,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-accent)] px-7 py-3.5 text-sm font-semibold text-white transition-opacity disabled:opacity-70"
+              className="btn-tactile group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[var(--color-accent)] px-7 py-3.5 text-sm font-semibold text-white disabled:opacity-70"
             >
               {status === "loading" ? (
                 <>

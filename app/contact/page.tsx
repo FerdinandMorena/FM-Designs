@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with FM Designs for a free quote on your next website project.",
+    "Start a project with FM Designs — tell us about the product you're building.",
 };
 
 export default function ContactPage() {
@@ -21,13 +21,13 @@ export default function ContactPage() {
         <SplitHeading
           as="h1"
           trigger="load"
-          className="max-w-2xl text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl"
+          className="max-w-2xl font-[family-name:var(--font-heading)] text-4xl font-medium leading-[1.1] tracking-tight text-[var(--foreground)] sm:text-5xl"
         >
-          Let&apos;s talk about your next website.
+          Let&apos;s talk about what you&apos;re building.
         </SplitHeading>
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--foreground)]/70">
-          Send over a few details about your business and what you need, and
-          we&apos;ll come back with next steps and a clear quote.
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--foreground-muted)]">
+          Send over a few details about the project, and we&apos;ll come back
+          with next steps and a clear, honest plan.
         </p>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
