@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/logo-icon.png" },
+  icons: { icon: "/morena-siteicon.png" },
 };
 
 const jsonLd = {

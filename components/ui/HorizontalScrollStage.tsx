@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -12,14 +12,22 @@ type HorizontalScrollStageProps = {
   /** Pixels to nudge the pinned position down from dead-center, so tall content clears a fixed navbar. */
   pinOffset?: number;
   /** Called once the pin/translate tween is created — return a cleanup fn for any extra scroll-linked animation set up against it (e.g. per-item reveals via `containerAnimation`). */
-  onSetup?: (mainTween: gsap.core.Tween, track: HTMLDivElement) => (() => void) | void;
+  onSetup?: (
+    mainTween: gsap.core.Tween,
+    track: HTMLDivElement,
+  ) => (() => void) | void;
 };
 
-export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0, onSetup }: HorizontalScrollStageProps) {
+export function HorizontalScrollStage({
+  children,
+  trackClassName,
+  pinOffset = 0,
+  onSetup,
+}: HorizontalScrollStageProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(false);
+  const previousButtonRef = useRef<HTMLButtonElement>(null);
+  const nextButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -137,8 +145,14 @@ export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0,
     if (!track) return;
 
     const update = () => {
-      setCanPrev(track.scrollLeft > 4);
-      setCanNext(track.scrollLeft < track.scrollWidth - track.clientWidth - 4);
+      previousButtonRef.current?.toggleAttribute(
+        "disabled",
+        track.scrollLeft <= 4,
+      );
+      nextButtonRef.current?.toggleAttribute(
+        "disabled",
+        track.scrollLeft >= track.scrollWidth - track.clientWidth - 4,
+      );
     };
     update();
     track.addEventListener("scroll", update, { passive: true });
@@ -163,26 +177,26 @@ export function HorizontalScrollStage({ children, trackClassName, pinOffset = 0,
         ref={trackRef}
         className={cn(
           "flex cursor-grab gap-6 overflow-x-auto px-6 pb-4 active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory motion-safe:overflow-visible motion-safe:px-[6vw] motion-safe:cursor-auto [&::-webkit-scrollbar]:hidden",
-          trackClassName
+          trackClassName,
         )}
       >
         {children}
       </div>
 
       <button
+        ref={previousButtonRef}
         type="button"
         aria-label="Scroll to previous"
         onClick={() => scrollByCard(-1)}
-        disabled={!canPrev}
         className="glass absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[var(--foreground)] transition-opacity disabled:opacity-30 motion-safe:hidden"
       >
         <ChevronLeft size={18} />
       </button>
       <button
+        ref={nextButtonRef}
         type="button"
         aria-label="Scroll to next"
         onClick={() => scrollByCard(1)}
-        disabled={!canNext}
         className="glass absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[var(--foreground)] transition-opacity disabled:opacity-30 motion-safe:hidden"
       >
         <ChevronRight size={18} />

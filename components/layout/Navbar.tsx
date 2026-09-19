@@ -57,16 +57,13 @@ export function Navbar() {
         >
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo-icon.png"
-              alt=""
-              width={44}
-              height={44}
+              src="/morena-logo.png"
+              alt="Morena Studio"
+              width={1920}
+              height={512}
               priority
-              className="h-11 w-11"
+              className="h-auto w-[200px]"
             />
-            <span className="font-[family-name:var(--font-heading)] text-lg font-bold tracking-tight">
-              FM<span className="text-[var(--color-accent)]">Designs</span>
-            </span>
           </Link>
 
           <ul className="hidden items-center gap-1 md:flex">
@@ -91,7 +88,11 @@ export function Navbar() {
           </ul>
 
           <div className="hidden md:flex">
-            <MagneticButton href="/contact" variant="accent" className="!px-5 !py-2.5 text-xs">
+            <MagneticButton
+              href="/contact"
+              variant="accent"
+              className="!px-5 !py-2.5 text-xs"
+            >
               Start a project
             </MagneticButton>
           </div>
@@ -113,13 +114,12 @@ export function Navbar() {
               >
                 <SheetTitle className="flex items-center gap-2 font-[family-name:var(--font-heading)] text-lg font-bold tracking-tight">
                   <Image
-                    src="/logo-icon.png"
-                    alt=""
-                    width={38}
-                    height={38}
-                    className="h-[38px] w-[38px]"
+                    src="/morena-logo.png"
+                    alt="Morena Studio"
+                    width={1980}
+                    height={552}
+                    className="h-auto w-[280px]"
                   />
-                  FM<span className="text-[var(--color-accent)]">Designs</span>
                 </SheetTitle>
                 <div className="mt-8 flex flex-col gap-1">
                   {navLinks.map((link) => (
@@ -133,7 +133,11 @@ export function Navbar() {
                     </SheetClose>
                   ))}
                   <SheetClose asChild>
-                    <MagneticButton href="/contact" variant="accent" className="mt-4 w-full">
+                    <MagneticButton
+                      href="/contact"
+                      variant="accent"
+                      className="mt-4 w-full"
+                    >
                       Start a project
                     </MagneticButton>
                   </SheetClose>

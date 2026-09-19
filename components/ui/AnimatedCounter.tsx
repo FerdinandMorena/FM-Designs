@@ -8,10 +8,12 @@ export function AnimatedCounter({
   value,
   suffix = "",
   className,
+  animateOnLoad = false,
 }: {
   value: number;
   suffix?: string;
   className?: string;
+  animateOnLoad?: boolean;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -26,7 +28,9 @@ export function AnimatedCounter({
       value,
       duration: 1.8,
       ease: "power2.out",
-      scrollTrigger: { trigger: el, start: "top 90%", once: true },
+      ...(animateOnLoad
+        ? {}
+        : { scrollTrigger: { trigger: el, start: "top 90%", once: true } }),
       onUpdate: () => {
         el.textContent = `${Math.floor(counter.value)}${suffix}`;
       },

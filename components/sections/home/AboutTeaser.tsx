@@ -24,7 +24,7 @@ export function AboutTeaser() {
               A small studio, built for close, hands-on work.
             </h2>
             <p className="mt-6 max-w-md text-sm leading-relaxed text-[var(--foreground-muted)]">
-              FM Designs stays deliberately small — one team across design and
+              Morena Studio stays deliberately small — one team across design and
               engineering, working directly with founders rather than through
               layers of account management. Based in South Africa, working
               with clients everywhere.

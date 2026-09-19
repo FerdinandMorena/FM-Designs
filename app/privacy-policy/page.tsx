@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How FM Designs collects, uses, and protects your information.",
+  description: "How Morena Studio collects, uses, and protects your information.",
 };
 
 const sections = [

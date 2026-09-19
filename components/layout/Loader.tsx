@@ -151,16 +151,13 @@ export function Loader() {
           className="relative flex flex-col items-center gap-4"
         >
           <Image
-            src="/logo-icon.png"
-            alt=""
-            width={72}
-            height={72}
+            src="/morena-logo.png"
+            alt="Morena Studio"
+            width={1920}
+            height={512}
             priority
-            className="h-16 w-16"
+            className="h-auto w-60"
           />
-          <span className="font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight">
-            FM<span className="text-[var(--color-accent)]">Designs</span>
-          </span>
         </div>
 
         <div className="relative flex w-52 flex-col items-center gap-3">

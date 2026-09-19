@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a project with FM Designs — tell us about the product you're building.",
+    "Start a project with Morena Studio — tell us about the product you're building.",
 };
 
 export default function ContactPage() {
@@ -88,7 +88,7 @@ export default function ContactPage() {
 
             <div className="overflow-hidden rounded-2xl border border-[var(--border-soft)]">
               <iframe
-                title="FM Designs location map"
+                title="Morena Studio location map"
                 src="https://www.google.com/maps?q=Polokwane,+South+Africa&output=embed"
                 width="100%"
                 height="220"

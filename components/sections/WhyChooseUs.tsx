@@ -55,7 +55,7 @@ export function WhyChooseUs() {
   return (
     <section className="relative bg-[var(--background)] py-24 sm:py-32">
       <div className="container-px mx-auto max-w-7xl">
-        <Eyebrow>Why FM Designs</Eyebrow>
+        <Eyebrow>Why Morena Studio</Eyebrow>
 
         <div className="mt-6 grid gap-16 lg:grid-cols-2">
           <div ref={linesWrapRef}>

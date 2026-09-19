@@ -20,10 +20,10 @@ import {
 } from "lucide-react";
 
 export const siteConfig = {
-  name: "FM Designs",
+  name: "Morena Studio",
   tagline: "A studio for digital products worth trusting.",
   description:
-    "FM Designs is a product and software studio. We partner with ambitious founders and organizations to design and engineer digital products, platforms, and brands built to last.",
+    "Morena Studio is a product and software studio. We partner with ambitious founders and organizations to design and engineer digital products, platforms, and brands built to last.",
   url: "https://fmdesigns.co.za",
   email: "hello.fmdesigns@gmail.com",
   phone: "+27 67 146 4628",
@@ -35,7 +35,7 @@ export const hero = {
   eyebrow: "Product & software studio",
   headline: "We build digital products worth trusting.",
   subhead:
-    "FM Designs partners with ambitious founders and organizations to design, engineer, and ship software that feels inevitable — from first sketch to production.",
+    "Morena Studio designs and builds high-quality websites, digital experiences, and software — turning ideas into thoughtful, purposeful products from concept to production.",
 };
 
 export const manifesto = [
@@ -519,18 +519,18 @@ export const techStack = [
 
 export const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
-  { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
   { href: "/contact", label: "Contact" },
 ];
 
 export const footerLinks = {
   quick: [
     { href: "/", label: "Home" },
-    { href: "/work", label: "Work" },
-    { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/work", label: "Work" },
     { href: "/contact", label: "Contact" },
   ],
   legal: [

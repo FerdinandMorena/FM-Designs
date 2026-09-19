@@ -13,7 +13,7 @@ import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "FM Designs is a small, hands-on product and software studio building modern, performance-focused digital products.",
+    "Morena Studio is a small, hands-on product and software studio building modern, performance-focused digital products.",
 };
 
 const pillars = [
@@ -49,7 +49,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden pt-40 pb-20 md:pt-48">
         <AmbientGrid />
         <div className="container-px mx-auto max-w-7xl">
-          <Eyebrow>About FM Designs</Eyebrow>
+          <Eyebrow>About Morena Studio</Eyebrow>
           <SplitHeading
             as="h1"
             trigger="load"
@@ -61,7 +61,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-5 text-base leading-relaxed text-[var(--foreground-muted)]">
               <p>
-                FM Designs is a product and software studio building modern,
+                Morena Studio is a product and software studio building modern,
                 responsive, and performance-focused digital products for
                 businesses that want their software to match the quality of
                 what they actually do.

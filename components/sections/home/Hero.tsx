@@ -29,7 +29,13 @@ export function Hero() {
       gsap.fromTo(
         imageWrap,
         { scale: 1.08, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.4, ease: "power3.out", delay: 0.15 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.4,
+          ease: "power3.out",
+          delay: 0.15,
+        },
       );
 
       gsap.registerPlugin(ScrollTrigger);
@@ -41,14 +47,24 @@ export function Hero() {
         yPercent: 12,
         scale: 1.14,
         ease: "none",
-        scrollTrigger: { trigger: section, start: "top top", end: "bottom top", scrub: true },
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
       });
 
       gsap.to(content, {
         yPercent: -16,
         opacity: 0.35,
         ease: "none",
-        scrollTrigger: { trigger: section, start: "top top", end: "bottom top", scrub: true },
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
       });
     }, section);
 
@@ -85,29 +101,36 @@ export function Hero() {
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <MagneticButton href="/contact" variant="accent">
               Start a project
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRight
+                size={15}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </MagneticButton>
             <MagneticButton href="/work" variant="outline">
               See our work
-              <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+              <ArrowUpRight
+                size={15}
+                className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5"
+              />
             </MagneticButton>
           </div>
 
-          <div className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div className="mt-14 grid w-full max-w-lg grid-cols-3">
             {stats.slice(0, 3).map((s, i) => (
               <div
                 key={s.label}
                 className={cn(
-                  "flex items-baseline gap-2",
-                  i > 0 && "border-l border-[var(--border-soft)] pl-8",
+                  "min-w-0 pr-4",
+                  i > 0 && "border-l border-[var(--border-soft)] pl-4",
                 )}
               >
                 <AnimatedCounter
                   value={s.value}
                   suffix={s.suffix}
-                  className="font-[family-name:var(--font-heading)] text-xl font-medium text-[var(--foreground)] sm:text-2xl"
+                  animateOnLoad
+                  className="block font-[family-name:var(--font-heading)] text-2xl font-medium leading-none text-[var(--foreground)] sm:text-3xl"
                 />
-                <span className="max-w-[6rem] text-xs leading-tight text-[var(--foreground-muted)]">
+                <span className="mt-2 block max-w-[8rem] text-[0.68rem] font-medium uppercase leading-snug tracking-[0.08em] text-[var(--foreground-muted)]">
                   {s.label}
                 </span>
               </div>

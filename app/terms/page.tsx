@@ -3,13 +3,13 @@ import { siteConfig } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "The terms and conditions governing FM Designs website projects and services.",
+  description: "The terms and conditions governing Morena Studio website projects and services.",
 };
 
 const sections = [
   {
     title: "1. Services",
-    body: "FM Designs provides website design, development, and related digital services as agreed in writing (via quote, proposal, or contract) with each client before work begins.",
+    body: "Morena Studio provides website design, development, and related digital services as agreed in writing (via quote, proposal, or contract) with each client before work begins.",
   },
   {
     title: "2. Project scope",
@@ -37,7 +37,7 @@ const sections = [
   },
   {
     title: "8. Limitation of liability",
-    body: "FM Designs will make reasonable efforts to deliver a functional, secure website, but is not liable for losses arising from third-party outages, misuse of the website, or issues outside our reasonable control.",
+    body: "Morena Studio will make reasonable efforts to deliver a functional, secure website, but is not liable for losses arising from third-party outages, misuse of the website, or issues outside our reasonable control.",
   },
   {
     title: "9. Changes to these terms",

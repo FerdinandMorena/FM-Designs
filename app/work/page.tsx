@@ -8,7 +8,7 @@ import { CtaSection } from "@/components/sections/CtaSection";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Case studies from FM Designs — product design and full-stack engineering for real, shipped clients.",
+    "Case studies from Morena Studio — product design and full-stack engineering for real, shipped clients.",
 };
 
 export default function WorkPage() {

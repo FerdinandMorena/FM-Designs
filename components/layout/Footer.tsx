@@ -6,7 +6,6 @@ import Link from "next/link";
 import gsap from "gsap";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { GithubIcon, InstagramIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { footerLinks, siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -99,8 +98,13 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight">
-              <Image src="/logo-icon.png" alt="" width={46} height={46} className="h-[46px] w-[46px]" />
-              FM<span className="text-[var(--color-accent)]">Designs</span>
+              <Image
+                src="/morena-logo.png"
+                alt="Morena Studio"
+                width={1920}
+                height={512}
+                className="h-auto w-[190px]"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--foreground-muted)]">
               {siteConfig.description}
@@ -144,7 +148,7 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-[var(--border-soft)] pt-8 text-xs text-[var(--foreground-muted)] md:flex-row">
-          <p>&copy; {new Date().getFullYear()} FM Designs. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Morena Studio. All rights reserved.</p>
           <div className="flex gap-6">
             {footerLinks.legal.map((l) => (
               <MagneticLink key={l.href} href={l.href} className="text-xs">
@@ -154,14 +158,14 @@ export function Footer() {
           </div>
         </div>
 
-        <RevealOnScroll y={32} className="mt-16 overflow-hidden">
+        <div className="mt-16 overflow-hidden">
           <p
-            className="select-none whitespace-nowrap font-[family-name:var(--font-heading)] font-bold leading-none tracking-tight text-white/[0.06]"
+            className="select-none whitespace-nowrap font-[family-name:var(--font-heading)] font-bold leading-none tracking-tight text-[var(--foreground)]/[0.1]"
             style={{ fontSize: "clamp(3rem, 12vw, 9rem)" }}
           >
-            FMDesigns.
+            Morena Studio.
           </p>
-        </RevealOnScroll>
+        </div>
       </div>
     </footer>
   );
